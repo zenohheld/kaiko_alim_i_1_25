@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    setlocale(LC_ALL, "rus");
+    int num;
+    cout << "Введите число: ";
+    cin >> num;
+    string D = "";
+    int temp = num;
+    while (temp > 0) {
+        D = to_string(temp % 2) + D;
+        temp /= 2;
+    }
+    if (D == "") D = "0";
+    bool isPal = true;
+    int len = D.length();
+    for (int i = 0; i < len / 2; i++) {
+        if (D[i] != D[len - 1 - i]) {
+            isPal = false;
+            break;
+        }
+    }
+    cout << "в двоичное: " << D << endl;
+    if (isPal) {
+        cout << "это палиндром в двоичной системе" << endl;
+    }
+    else {
+        cout << "это НЕ палиндром в двоичной системе" << endl;
+    }
+    return 0;
+}
